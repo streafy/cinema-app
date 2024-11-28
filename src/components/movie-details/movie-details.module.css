@@ -1,0 +1,27 @@
+.movieDetails {
+  display: flex;
+  gap: 2rem;
+  background-color: var(--content-background);
+  color: var(--foreground);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 70rem;
+}
+
+.image {
+  border-radius: 0.5rem;
+  width: 210px;
+  height: 315px;
+}
+
+.name {
+}
+
+.description {
+}
