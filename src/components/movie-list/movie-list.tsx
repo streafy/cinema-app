@@ -15,11 +15,11 @@ const MovieList = ({ movies }: MovieListProps) => {
         <Link
           className={styles.link}
           key={movie.kinopoiskId}
-          href={`movie/${movie.kinopoiskId.toString()}`}
+          href={`movie/${movie.kinopoiskId?.toString()}`}
         >
           <MovieCard
             name={movie.nameRu ?? ''}
-            image={movie.posterUrlPreview}
+            image={movie.posterUrlPreview ?? ''}
             year={movie.year ?? ''}
           />
         </Link>

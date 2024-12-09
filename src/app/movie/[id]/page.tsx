@@ -12,7 +12,7 @@ type MovieDetailsPageProps = {
 
 export async function generateStaticParams() {
   const movies = await fetchMovies(1);
-  return movies.items.map((movie) => ({ id: movie.kinopoiskId.toString() }));
+  return movies.items.map((movie) => ({ id: movie.kinopoiskId?.toString() }));
 }
 
 const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
