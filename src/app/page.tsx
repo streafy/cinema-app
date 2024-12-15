@@ -1,6 +1,6 @@
 import MovieList from '@/components/movie-list/movie-list';
 import Pagination from '@/components/pagination/pagination';
-import { fetchMovies } from '@/services/fetchMovies';
+import { fetchMovieCollection } from '@/services/fetchMovieCollection';
 
 import styles from './page.module.css';
 
@@ -11,7 +11,10 @@ type HomePageProps = {
 const HomePage = async (props: HomePageProps) => {
   const searchParams = await props.searchParams;
   const currentPage = Number(searchParams?.page) || 1;
-  const moviesResponse = await fetchMovies(currentPage);
+  const moviesResponse = await fetchMovieCollection(
+    'TOP_250_MOVIES',
+    currentPage
+  );
   const movies = moviesResponse.items;
   const totalPages = moviesResponse.totalPages;
 
