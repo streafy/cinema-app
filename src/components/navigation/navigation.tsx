@@ -18,10 +18,13 @@ const Navigation = () => {
         Главная
       </Link>
       <Link
-        className={clsx(styles.link, pathname === '/123' && styles.active)}
-        href={'/123'}
+        className={clsx(
+          styles.link,
+          pathname === '/collections' && styles.active
+        )}
+        href={'/collections'}
       >
-        Не главная
+        Коллекции
       </Link>
     </nav>
   );
