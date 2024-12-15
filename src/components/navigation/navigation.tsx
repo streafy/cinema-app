@@ -1,31 +1,14 @@
-'use client';
-
-import clsx from 'clsx';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import NavigationLink from '@/components/navigation/navigation-link';
 
 import styles from './navigation.module.css';
 
 const Navigation = () => {
-  const pathname = usePathname();
-
   return (
     <nav className={styles.navigation}>
-      <Link
-        className={clsx(styles.link, pathname === '/' && styles.active)}
-        href={'/'}
-      >
+      <NavigationLink href={'/'} isExact={true}>
         Главная
-      </Link>
-      <Link
-        className={clsx(
-          styles.link,
-          pathname === '/collections' && styles.active
-        )}
-        href={'/collections'}
-      >
-        Коллекции
-      </Link>
+      </NavigationLink>
+      <NavigationLink href={'/collections'}>Коллекции</NavigationLink>
     </nav>
   );
 };
