@@ -2,6 +2,7 @@ import MovieList from '@/components/movie-list/movie-list';
 import Pagination from '@/components/pagination/pagination';
 import { fetchMovieCollection } from '@/services/fetchMovieCollection';
 import { CollectionPathname, CollectionType } from '@/types/movie-collection';
+import { notFound } from 'next/navigation';
 
 import styles from './page.module.css';
 
@@ -25,6 +26,11 @@ const CollectionPage = async ({
     'comics-theme': 'COMICS_THEME',
   };
   const pathname = (await params).name as CollectionPathname;
+
+  if (!Object.hasOwn(collectionTypes, pathname)) {
+    return notFound();
+  }
+
   const collectionType = collectionTypes[pathname];
 
   const currentPage = Number((await searchParams)?.page) || 1;
