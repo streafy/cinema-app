@@ -1,0 +1,10 @@
+.label {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.input {
+  padding: 0.25rem 0.375rem;
+  width: 18rem;
+}

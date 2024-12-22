@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.range {
+  display: flex;
+  gap: 1rem;
+  width: 18rem;
+  justify-content: space-between;
+}
+
+.range input {
+  width: 5rem;
+}
