@@ -1,12 +1,9 @@
-'use client';
-
+import { search } from '@/actions/actions';
 import Input from '@/components/form/input/input';
 import Range from '@/components/form/range/range';
 import Select from '@/components/form/select/select';
 import { CountryFilter, GenreFilter } from '@/types/filters';
-import { MovieType, SearchFormData, SortBy } from '@/types/movie-search';
-import { useRouter } from 'next/navigation';
-import { FormEvent } from 'react';
+import { MovieType, SortBy } from '@/types/movie-search';
 
 import styles from './movie-search.module.css';
 
@@ -30,30 +27,8 @@ type MovieSearchProps = {
 };
 
 const MovieSearch = ({ genres, countries }: MovieSearchProps) => {
-  const router = useRouter();
-
-  const createParams = (data: SearchFormData) => {
-    const params = new URLSearchParams();
-    Object.entries(data).forEach(([key, value]) => {
-      if (value) {
-        params.set(key, value.toString());
-      }
-    });
-    return params.toString();
-  };
-
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    const params = createParams(data);
-    router.push(`/movies?${params}`);
-  };
-
   return (
-    <form className={styles.container} onSubmit={onSubmit}>
+    <form className={styles.container} action={search}>
       <div className={styles.wrapper}>
         <Input label="Название" type="text" name="keyword" />
         <Select
