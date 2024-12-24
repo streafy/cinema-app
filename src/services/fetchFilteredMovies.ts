@@ -9,7 +9,9 @@ export async function fetchFilteredMovies(query: string) {
       'X-API-KEY': API_KEY,
       'Content-Type': 'application/json',
     },
+    cache: 'force-cache',
+    next: { revalidate: 60 * 60 * 2 },
   });
 
-  return (await response.json()) as FilteredMoviesResponse;
+  return ((await response.json()) as FilteredMoviesResponse).items;
 }

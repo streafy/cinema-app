@@ -1,7 +1,4 @@
 .list {
-  padding-left: 4rem;
-  padding-right: 4rem;
-  padding-bottom: 2rem;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(13.25rem, 1fr));

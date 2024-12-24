@@ -1,6 +1,9 @@
 import MovieList from '@/components/movie-list/movie-list';
 import Pagination from '@/components/pagination/pagination';
+import { MovieListSkeleton } from '@/components/skeletons/movie-list-skeleton';
+import { fetchFilteredMoviesPageCount } from '@/lib/queries';
 import { fetchFilteredMovies } from '@/services/fetchFilteredMovies';
+import { Suspense } from 'react';
 
 import styles from './page.module.css';
 
@@ -22,25 +25,23 @@ type MoviesPageProps = {
 
 const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
   const searchParamsData = await searchParams;
-
   const query = new URLSearchParams(searchParamsData).toString();
-  const response = await fetchFilteredMovies(query);
-
-  const movies = response.items;
-  const totalPages = response.totalPages;
-  const totalItems = response.total;
-
+  const currentPage = Number(searchParamsData.page) || 1;
+  const totalPages = await fetchFilteredMoviesPageCount(query);
   const displayedPages = Math.min(9, totalPages);
+
+  if (totalPages === 0) {
+    return <span>Пусто</span>;
+  }
 
   return (
     <main className={styles.page}>
-      {totalItems === 0 && <span>Пусто</span>}
-      {totalItems !== 0 && (
-        <>
-          <MovieList movies={movies} />
-          <Pagination totalPages={totalPages} displayedPages={displayedPages} />
-        </>
-      )}
+      <>
+        <Suspense key={currentPage} fallback={<MovieListSkeleton />}>
+          <MovieList fetchMovieList={async () => fetchFilteredMovies(query)} />
+        </Suspense>
+        <Pagination totalPages={totalPages} displayedPages={displayedPages} />
+      </>
     </main>
   );
 };

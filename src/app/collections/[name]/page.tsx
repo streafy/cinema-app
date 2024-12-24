@@ -1,8 +1,11 @@
 import MovieList from '@/components/movie-list/movie-list';
 import Pagination from '@/components/pagination/pagination';
+import { MovieListSkeleton } from '@/components/skeletons/movie-list-skeleton';
+import { fetchMovieCollectionPageCount } from '@/lib/queries';
 import { fetchMovieCollection } from '@/services/fetchMovieCollection';
 import { CollectionPathname, CollectionType } from '@/types/movie-collection';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 import styles from './page.module.css';
 
@@ -32,25 +35,26 @@ const CollectionPage = async ({
   }
 
   const collectionType = collectionTypes[pathname];
-
   const currentPage = Number((await searchParams)?.page) || 1;
-
-  const response = await fetchMovieCollection(collectionType, currentPage);
-  const collection = response.items;
-  const totalPages = response.totalPages;
-  const totalItems = response.total;
-
+  const totalPages = await fetchMovieCollectionPageCount(collectionType);
   const displayedPages = Math.min(9, totalPages);
+
+  if (totalPages === 0) {
+    return <span>Пусто</span>;
+  }
 
   return (
     <div className={styles.page}>
-      {totalItems === 0 && <span>Пусто</span>}
-      {totalItems !== 0 && (
-        <>
-          <MovieList movies={collection} />
-          <Pagination totalPages={totalPages} displayedPages={displayedPages} />
-        </>
-      )}
+      <>
+        <Suspense key={currentPage} fallback={<MovieListSkeleton />}>
+          <MovieList
+            fetchMovieList={async () =>
+              fetchMovieCollection(collectionType, currentPage)
+            }
+          />
+        </Suspense>
+        <Pagination totalPages={totalPages} displayedPages={displayedPages} />
+      </>
     </div>
   );
 };

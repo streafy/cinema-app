@@ -18,7 +18,11 @@ export async function fetchMovieCollection(
         'X-API-KEY': API_KEY,
         'Content-Type': 'application/json',
       },
+      cache: 'force-cache',
+      next: {
+        revalidate: 60 * 60 * 2,
+      },
     }
   );
-  return (await response.json()) as MovieCollectionResponse;
+  return ((await response.json()) as MovieCollectionResponse).items;
 }
