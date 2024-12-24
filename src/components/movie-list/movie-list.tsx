@@ -23,7 +23,12 @@ const MovieList = async ({ fetchMovieList }: MovieListProps) => {
           href={`/movie/${movie.kinopoiskId?.toString()}`}
         >
           <MovieCard
-            name={movie.nameRu ?? ''}
+            name={
+              movie.nameRu ??
+              movie.nameEn ??
+              movie.nameOriginal ??
+              'Неизвестный фильм'
+            }
             image={movie.posterUrlPreview ?? ''}
             year={movie.year ?? ''}
           />
