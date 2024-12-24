@@ -1,7 +1,7 @@
-import { search } from '@/actions/actions';
 import Input from '@/components/form/input/input';
 import Range from '@/components/form/range/range';
 import Select from '@/components/form/select/select';
+import { search } from '@/lib/actions';
 import { CountryFilter, GenreFilter } from '@/types/filters';
 import { MovieType, SortBy } from '@/types/movie-search';
 
