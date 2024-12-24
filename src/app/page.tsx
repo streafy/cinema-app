@@ -1,5 +1,5 @@
 import MovieSearch from '@/components/movie-search/movie-search';
-import { fetchFilters } from '@/services/fetchFilters';
+import { fetchFilters } from '@/lib/api';
 
 import styles from './page.module.css';
 

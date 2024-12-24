@@ -1,5 +1,5 @@
 import MovieDetails from '@/components/movie-details/movie-details';
-import { fetchMovieDetails } from '@/services/fetchMovieDetails';
+import { fetchMovieDetails } from '@/lib/api';
 import { notFound } from 'next/navigation';
 
 import styles from './page.module.css';

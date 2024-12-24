@@ -1,8 +1,7 @@
 import MovieList from '@/components/movie-list/movie-list';
 import Pagination from '@/components/pagination/pagination';
 import { MovieListSkeleton } from '@/components/skeletons/movie-list-skeleton';
-import { fetchMovieCollectionPageCount } from '@/lib/queries';
-import { fetchMovieCollection } from '@/services/fetchMovieCollection';
+import { fetchMovieCollection, fetchMovieCollectionPageCount } from '@/lib/api';
 import { CollectionPathname, CollectionType } from '@/types/movie-collection';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
