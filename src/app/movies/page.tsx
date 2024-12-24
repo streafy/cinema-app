@@ -25,8 +25,13 @@ type MoviesPageProps = {
 const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
   const searchParamsData = await searchParams;
   const query = new URLSearchParams(searchParamsData).toString();
+
+  const searchParamsWithoutPage = new URLSearchParams(searchParamsData);
+  searchParamsWithoutPage.delete('page');
+  const queryWithoutPage = searchParamsWithoutPage.toString();
+
   const currentPage = Number(searchParamsData.page) || 1;
-  const totalPages = await fetchFilteredMoviesPageCount(query);
+  const totalPages = await fetchFilteredMoviesPageCount(queryWithoutPage);
   const displayedPages = Math.min(9, totalPages);
 
   if (totalPages === 0) {
