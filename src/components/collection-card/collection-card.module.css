@@ -9,4 +9,10 @@
   align-items: center;
   flex-grow: 1;
   height: 100%;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .card {
+  }
 }

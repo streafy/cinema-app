@@ -7,7 +7,7 @@ const HomePage = async () => {
   const { genres, countries } = await fetchFilters();
 
   return (
-    <main className={styles.main}>
+    <main className={styles.page}>
       <MovieSearch genres={genres} countries={countries} />
     </main>
   );

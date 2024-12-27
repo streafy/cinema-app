@@ -11,3 +11,14 @@
   border-radius: 0.2rem;
   border: 1px solid rgb(133, 133, 133);
 }
+
+@media (max-width: 640px) {
+  .label {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .input {
+    width: 100%;
+  }
+}

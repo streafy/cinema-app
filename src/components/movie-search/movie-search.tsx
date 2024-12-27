@@ -71,8 +71,21 @@ const MovieSearch = ({ genres, countries }: MovieSearchProps) => {
             </option>
           ))}
         </Select>
-        <Range label="Рейтинг" min={0} max={10} step={0.1} name="rating" />
-        <Range label="Год" min={0} max={9999} name="year" />
+        <Range
+          label="Рейтинг"
+          min={0}
+          max={10}
+          step={0.1}
+          name="rating"
+          inputSize={'small'}
+        />
+        <Range
+          label="Год"
+          min={0}
+          max={9999}
+          name="year"
+          inputSize={'medium'}
+        />
         <Input label="IMDb ID" type="text" name="imdbId" />
       </div>
       <button className={styles.button}>Поиск</button>

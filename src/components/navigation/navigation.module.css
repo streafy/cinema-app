@@ -5,3 +5,10 @@
   border-radius: 1rem;
   gap: 1rem;
 }
+
+@media (max-width: 640px) {
+  .navigation {
+    flex-wrap: wrap;
+    padding: 2rem 2rem;
+  }
+}

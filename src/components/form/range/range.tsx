@@ -1,4 +1,5 @@
 import Input from '@/components/form/input/input';
+import clsx from 'clsx';
 
 import styles from './range.module.css';
 
@@ -8,13 +9,20 @@ type RangeProps = {
   max: number;
   step?: number;
   name: string;
+  inputSize: 'small' | 'medium';
 };
 
-const Range = ({ label, min, max, step, name }: RangeProps) => {
+const Range = ({ label, min, max, step, name, inputSize }: RangeProps) => {
   return (
     <div className={styles.container}>
       {label}
-      <div className={styles.range}>
+      <div
+        className={clsx(
+          styles.range,
+          inputSize === 'small' && styles.small,
+          inputSize === 'medium' && styles.medium
+        )}
+      >
         <Input
           label="от"
           type="number"
