@@ -81,7 +81,7 @@ export async function fetchMovieDetails(id: number) {
 }
 
 export async function fetchFilters() {
-  const response = await fetch(`${BASE_URL}//api/v2.2/films/filters`, {
+  const response = await fetch(`${BASE_URL}/api/v2.2/films/filters`, {
     headers: {
       'X-API-KEY': API_KEY,
       'Content-Type': 'application/json',
@@ -91,3 +91,16 @@ export async function fetchFilters() {
 
   return (await response.json()) as FiltersResponse;
 }
+
+export const fetchApiKeyLimits = async () => {
+  const response = await fetch(`${BASE_URL}/api/v1/api_keys/${API_KEY}`, {
+    headers: {
+      'X-API-KEY': API_KEY,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  return (await response.json()) as Promise<{
+    dailyQuota: { value: number; used: number };
+  }>;
+};

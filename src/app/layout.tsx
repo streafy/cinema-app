@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 
 import Navigation from '@/components/navigation/navigation';
-import localFont from 'next/font/local';
+import { fetchApiKeyLimits } from '@/lib/api';
 
 import './globals.css';
 
+import localFont from 'next/font/local';
 import { ReactNode } from 'react';
 
 import styles from './layout.module.css';
@@ -28,13 +29,17 @@ type RootLayoutProps = Readonly<{
   children: ReactNode;
 }>;
 
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = async ({ children }: RootLayoutProps) => {
+  const { used, value } = (await fetchApiKeyLimits()).dailyQuota;
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className={styles.wrapper}>
           <Navigation />
           {children}
+          <footer>
+            API Key Limits: {used}/{value}
+          </footer>
         </div>
       </body>
     </html>
