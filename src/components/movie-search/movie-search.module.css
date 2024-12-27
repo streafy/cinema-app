@@ -32,7 +32,7 @@
   border: 3px solid var(--foreground);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 840px) {
   .container {
     font-size: 1.1rem;
     padding: 1.5rem;
