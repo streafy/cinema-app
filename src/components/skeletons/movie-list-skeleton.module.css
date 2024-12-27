@@ -6,3 +6,9 @@
   gap: 1rem;
   justify-content: center;
 }
+
+@media (min-width: 49.75rem) and (max-width: 63.9375rem) {
+  .list {
+    grid-template-columns: repeat(2, minmax(13.25rem, 1fr));
+  }
+}
