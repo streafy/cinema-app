@@ -35,6 +35,7 @@
 @media (max-width: 640px) {
   .container {
     font-size: 1.1rem;
+    padding: 1.5rem;
   }
 
   .wrapper {
