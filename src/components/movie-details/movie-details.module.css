@@ -4,7 +4,7 @@
   background-color: var(--content-background);
   color: var(--foreground);
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .info {
@@ -20,8 +20,9 @@
   height: 315px;
 }
 
-.name {
-}
-
-.description {
+@media (max-width: 640px) {
+  .movieDetails {
+    flex-direction: column;
+    align-items: center;
+  }
 }

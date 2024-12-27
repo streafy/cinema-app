@@ -19,3 +19,10 @@
   background-color: var(--foreground);
   color: var(--content-background);
 }
+
+@media (max-width: 640px) {
+  .number {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

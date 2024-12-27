@@ -14,3 +14,22 @@
 .range input {
   width: 5rem;
 }
+
+@media (max-width: 640px) {
+  .container {
+    gap: 0.5rem;
+  }
+
+  .range {
+    width: 100%;
+    justify-content: end;
+  }
+
+  .small input {
+    width: 2rem;
+  }
+
+  .medium input {
+    width: 2.7rem;
+  }
+}
