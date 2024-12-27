@@ -18,11 +18,12 @@
 @media (max-width: 640px) {
   .container {
     gap: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .range {
-    width: 100%;
     justify-content: end;
+    width: auto;
   }
 
   .small input {
