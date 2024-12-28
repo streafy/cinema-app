@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
+import ApiLimit from '@/components/api-limit/api-limit';
 import Navigation from '@/components/navigation/navigation';
-import { fetchApiKeyLimits } from '@/lib/api';
 
 import './globals.css';
 
@@ -30,7 +30,6 @@ type RootLayoutProps = Readonly<{
 }>;
 
 const RootLayout = async ({ children }: RootLayoutProps) => {
-  const { used, value } = (await fetchApiKeyLimits()).dailyQuota;
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -38,7 +37,7 @@ const RootLayout = async ({ children }: RootLayoutProps) => {
           <Navigation />
           {children}
           <footer>
-            API Key Limits: {used}/{value}
+            <ApiLimit />
           </footer>
         </div>
       </body>
