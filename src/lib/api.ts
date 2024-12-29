@@ -71,6 +71,8 @@ export async function fetchMovieDetails(id: number) {
       'X-API-KEY': API_KEY,
       'Content-Type': 'application/json',
     },
+    cache: 'force-cache',
+    next: { revalidate: 60 * 60 * 2 },
   });
 
   if (response.status === 404) {
