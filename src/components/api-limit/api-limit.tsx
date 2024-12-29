@@ -75,6 +75,12 @@ const ApiLimit = () => {
     return responseData;
   };
 
+  const handleRefresh = async () => {
+    const response = await fetchApiLimit();
+    setApiLimitData(response.dailyQuota);
+    setLastUpdatedMinutes(0);
+  };
+
   const content = apiLimitData ? (
     <div>Доступно запросов к API: {apiLimitData.value - apiLimitData.used}</div>
   ) : (
@@ -89,7 +95,7 @@ const ApiLimit = () => {
       {apiLimitData !== null && <div className={styles.updated}>{updated}</div>}
       <button
         className={`${styles.icon} ${isActive ? styles.active : ''}`}
-        onClick={() => fetchApiLimit()}
+        onClick={handleRefresh}
       >
         <ArrowPathIcon />
       </button>
