@@ -9,6 +9,7 @@ const Navigation = () => {
         Главная
       </NavigationLink>
       <NavigationLink href={'/collections'}>Коллекции</NavigationLink>
+      <NavigationLink href={'/favorites'}>Избранное</NavigationLink>
     </nav>
   );
 };

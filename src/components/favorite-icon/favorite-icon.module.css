@@ -1,0 +1,21 @@
+.favoriteIcon {
+  width: 2rem;
+  height: 2rem;
+  stroke: gold;
+  fill: transparent;
+  transition-duration: 1s;
+}
+
+.favoriteIcon:hover {
+  animation: pulse 2s linear infinite;
+}
+
+.filled {
+  fill: gold;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.3);
+  }
+}

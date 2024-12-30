@@ -106,3 +106,7 @@ export const fetchApiKeyLimits = async () => {
     dailyQuota: { value: number; used: number };
   }>;
 };
+
+export const fetchFavoriteMovies = (favoriteMovieIds: number[]) => {
+  return Promise.all(favoriteMovieIds.map((id) => fetchMovieDetails(id)));
+};

@@ -1,16 +1,21 @@
+import FavoriteIcon from '@/components/favorite-icon/favorite-icon';
 import Image from 'next/image';
 
 import styles from './movie-card.module.css';
 
 type MovieCardProps = {
+  id: number;
   name: string;
   image: string;
   year: string;
 };
 
-const MovieCard = ({ name, image, year }: MovieCardProps) => {
+const MovieCard = ({ id, name, image, year }: MovieCardProps) => {
   return (
     <div className={styles.movieCard}>
+      <div className={styles.iconContainer}>
+        <FavoriteIcon id={id} />
+      </div>
       <Image
         className={styles.image}
         src={image}

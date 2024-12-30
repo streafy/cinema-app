@@ -22,6 +22,7 @@ const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
   return (
     <main className={styles.page}>
       <MovieDetails
+        id={movieId}
         name={movie.nameRu ?? ''}
         image={movie.posterUrl}
         description={movie.description ?? ''}
