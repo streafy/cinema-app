@@ -1,0 +1,34 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 13.25rem);
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+  justify-content: start;
+}
+
+.link {
+  display: flex;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 64rem) and (max-width: 78.1875rem) {
+  .container {
+    grid-template-columns: repeat(4, minmax(13.25rem, 1fr));
+  }
+}
+
+@media (min-width: 49.75rem) and (max-width: 63.9375rem) {
+  .container {
+    grid-template-columns: repeat(2, minmax(13.25rem, 1fr));
+  }
+}
+
+@media (max-width: 49.75rem) {
+  .container {
+    grid-template-columns: repeat(auto-fit, minmax(13.25rem, 1fr));
+  }
+}

@@ -16,24 +16,28 @@ const MovieList = async ({ fetchMovieList }: MovieListProps) => {
 
   return (
     <div className={styles.movieList}>
-      {movies.map((movie) => (
-        <Link
-          className={styles.link}
-          key={movie.kinopoiskId}
-          href={`/movie/${movie.kinopoiskId?.toString()}`}
-        >
-          <MovieCard
-            name={
-              movie.nameRu ??
-              movie.nameEn ??
-              movie.nameOriginal ??
-              'Неизвестный фильм'
-            }
-            image={movie.posterUrlPreview ?? ''}
-            year={movie.year ?? ''}
-          />
-        </Link>
-      ))}
+      {movies.map((movie) => {
+        if (movie.kinopoiskId === undefined) return;
+        return (
+          <Link
+            className={styles.link}
+            key={movie.kinopoiskId}
+            href={`/movie/${movie.kinopoiskId?.toString()}`}
+          >
+            <MovieCard
+              id={movie.kinopoiskId}
+              name={
+                movie.nameRu ??
+                movie.nameEn ??
+                movie.nameOriginal ??
+                'Неизвестный фильм'
+              }
+              image={movie.posterUrlPreview ?? ''}
+              year={movie.year ?? ''}
+            />
+          </Link>
+        );
+      })}
     </div>
   );
 };

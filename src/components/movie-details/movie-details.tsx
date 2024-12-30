@@ -1,8 +1,10 @@
+import AddToFavorites from '@/components/add-to-favorites/add-to-favorites';
 import Image from 'next/image';
 
 import styles from './movie-details.module.css';
 
 type MovieDetailsProps = {
+  id: number;
   name: string;
   image: string;
   description: string;
@@ -11,6 +13,7 @@ type MovieDetailsProps = {
 };
 
 const MovieDetails = ({
+  id,
   name,
   image,
   description,
@@ -31,6 +34,7 @@ const MovieDetails = ({
         <p className={styles.description}>{description}</p>
         <span>Жанр: {genre}</span>
         <span>Страна: {country}</span>
+        <AddToFavorites id={id} />
       </div>
     </div>
   );
